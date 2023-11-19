@@ -1,0 +1,26 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "3.81.0"
+    }
+  }
+}
+
+provider "azurerm" {
+    subscription_id = "84176b00-f06a-49a0-b0e1-6faaf6a21c6a"
+    tenant_id = "250cf246-4349-4367-8bb8-d289f4465a54"
+    client_id = "a74a6537-7a83-4177-9c24-f3cbe9b90976"
+    client_secret = "Wkt8Q~1arWCFpdpBhMU6VqM4hgkuGqMteum4wcXP"
+    
+    features {
+      
+    }
+  
+}
+
+resource "azurerm_resource_group" "vdi" {
+    name = "vdi"
+    location = "central india"
+  
+}
