@@ -1,0 +1,39 @@
+terraform {
+  required_providers {
+    azurerm = {
+        source = "hashicorp/azurerm"
+        version = "3.81.0"
+    }
+  }
+}
+provider "azurerm" {
+    subscription_id = "84176b00-f06a-49a0-b0e1-6faaf6a21c6a"
+    tenant_id = "250cf246-4349-4367-8bb8-d289f4465a54"
+    client_id = "4546ec34-4bb9-4326-9373-65cf2fbb4f18"
+    client_secret = "q1v8Q~hUj7NPr1Wjq30s-ix.JvGlo5oMGM3-Dcij"
+    features {
+      
+    }
+}
+  
+resource "azurerm_resource_group" "VDI" {
+    name = "vdi"
+    location = "central india"
+}
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West Europe"
+}
+
+resource "azurerm_storage_account" "example" {
+  name                     = "vdistorage"
+  resource_group_name      = "vdi"
+  location                 = "central india"
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  account_kind = "StorageV2"
+
+  tags = {
+    environment = "staging"
+  }
+}
